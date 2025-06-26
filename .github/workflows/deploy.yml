@@ -1,4 +1,4 @@
-name: Deploy ClickOnce App from Subfolder to Firebase
+name: Deploy ClickOnce Files to Firebase
 
 on:
   push:
@@ -9,13 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout repo
       uses: actions/checkout@v3
 
     - name: Install Firebase CLI
       run: npm install -g firebase-tools
 
-    - name: Deploy from subfolder
+    - name: Deploy static files to Firebase
       run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
-      working-directory: ./LfsPublish
-    
